@@ -1,0 +1,33 @@
+{
+    "configen": {
+        "version": "4",
+        "sources": [
+            {
+                "id": "main",
+                "path": "src/main/code",
+                "r": true
+            },
+            {
+                "id": "test",
+                "path": "src/test/code",
+                "r": true
+            }
+        ],
+        "destinations": [
+            {
+                "id": "main",
+                "path": "gen/gen4securitygin",
+                "sources": [
+                    "main"
+                ]
+            },
+            {
+                "id": "test",
+                "path": "gen/gen4securitygintest",
+                "sources": [
+                    "test"
+                ]
+            }
+        ]
+    }
+}
