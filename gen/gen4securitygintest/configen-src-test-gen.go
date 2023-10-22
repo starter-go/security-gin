@@ -48,3 +48,41 @@ func (inst*p0291972cb6_code_Demo1controller) getResponder(ie application.Injecti
 }
 
 
+
+// type p0291972cb.MockPermissionService in package:github.com/starter-go/security-gin/src/test/code
+//
+// id:com-0291972cb6d389c8-code-MockPermissionService
+// class:
+// alias:alias-2dece1e495fd61b93f78009d229f38cf-PermissionService
+// scope:singleton
+//
+type p0291972cb6_code_MockPermissionService struct {
+}
+
+func (inst* p0291972cb6_code_MockPermissionService) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-0291972cb6d389c8-code-MockPermissionService"
+	r.Classes = ""
+	r.Aliases = "alias-2dece1e495fd61b93f78009d229f38cf-PermissionService"
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p0291972cb6_code_MockPermissionService) new() any {
+    return &p0291972cb.MockPermissionService{}
+}
+
+func (inst* p0291972cb6_code_MockPermissionService) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p0291972cb.MockPermissionService)
+	nop(ie, com)
+
+	
+
+
+    return nil
+}
+
+

@@ -3,6 +3,7 @@ import (
     pd4e0ee677 "github.com/starter-go/security"
     p6d96d35d0 "github.com/starter-go/security-gin/src/main/code"
     p91f218d46 "github.com/starter-go/security/jwt"
+    p2dece1e49 "github.com/starter-go/security/rbac"
      "github.com/starter-go/application"
 )
 
@@ -39,6 +40,7 @@ func (inst* p6d96d35d01_code_ContextBindingController) inject(injext application
 	
     com.JWTser = inst.getJWTser(ie)
     com.SessionService = inst.getSessionService(ie)
+    com.PermissionService = inst.getPermissionService(ie)
 
 
     return nil
@@ -52,6 +54,11 @@ func (inst*p6d96d35d01_code_ContextBindingController) getJWTser(ie application.I
 
 func (inst*p6d96d35d01_code_ContextBindingController) getSessionService(ie application.InjectionExt)pd4e0ee677.SessionService{
     return ie.GetComponent("#alias-d4e0ee677c339b7ffcf1d55767953499-SessionService").(pd4e0ee677.SessionService)
+}
+
+
+func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie application.InjectionExt)p2dece1e49.PermissionService{
+    return ie.GetComponent("#alias-2dece1e495fd61b93f78009d229f38cf-PermissionService").(p2dece1e49.PermissionService)
 }
 
 

@@ -31,6 +31,7 @@ func (inst*autoRegistrar) addAll() error {
 
     
     inst.register(&p0291972cb6_code_Demo1controller{})
+    inst.register(&p0291972cb6_code_MockPermissionService{})
 
 
     return nil

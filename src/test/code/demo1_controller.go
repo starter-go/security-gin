@@ -34,6 +34,7 @@ func (inst *Demo1controller) Registration() *libgin.ControllerRegistration {
 func (inst *Demo1controller) route(rp libgin.RouterProxy) error {
 	rp = rp.For("demo1")
 	rp.GET("", inst.handleGet)
+	rp.GET(":id", inst.handleGet)
 	return nil
 }
 
