@@ -21,14 +21,15 @@ func (inst *SecurityGinResponder) _impl() (libgin.ResponderRegistry, libgin.Resp
 	return inst, inst
 }
 
-// Registration ...
-func (inst *SecurityGinResponder) Registration() *libgin.ResponderRegistration {
-	return &libgin.ResponderRegistration{
+// ListRegistrations ...
+func (inst *SecurityGinResponder) ListRegistrations() []*libgin.ResponderRegistration {
+	r1 := &libgin.ResponderRegistration{
 		Enabled:   true,
 		Priority:  0,
 		Name:      "security-gin-rbac-responder",
 		Responder: inst,
 	}
+	return []*libgin.ResponderRegistration{r1}
 }
 
 // Accept ...
