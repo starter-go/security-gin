@@ -25,7 +25,7 @@ require (
 	github.com/starter-go/base v0.9.9 // indirect
 	github.com/starter-go/configen v0.9.3 // indirect
 	github.com/starter-go/libgin v1.0.8 // indirect
-	github.com/starter-go/security v1.0.29 // indirect
+	github.com/starter-go/security v1.0.33 // indirect
 	github.com/starter-go/starter v1.0.4 // indirect
 	github.com/starter-go/vlog v0.9.5 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect

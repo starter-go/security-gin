@@ -40,6 +40,10 @@ func (inst *MockPermissionService) List(c context.Context, q *rbac.PermissionQue
 	return nil, fmt.Errorf("no impl")
 }
 
+func (inst *MockPermissionService) ListAll(c context.Context) ([]*rbac.PermissionDTO, error) {
+	return nil, fmt.Errorf("no impl")
+}
+
 func (inst *MockPermissionService) GetCache() rbac.PermissionCache {
 	return &inst.cache
 }
