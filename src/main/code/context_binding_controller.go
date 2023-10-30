@@ -3,6 +3,7 @@ package code
 import (
 	"fmt"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -23,6 +24,7 @@ type ContextBindingController struct {
 	SessionService    security.SessionService //starter:inject("#")
 	PermissionService rbac.PermissionService  //starter:inject("#")
 
+	GroupNameList string //starter:inject("${security.web.groups}")
 }
 
 func (inst *ContextBindingController) _impl() libgin.Controller {
@@ -31,9 +33,25 @@ func (inst *ContextBindingController) _impl() libgin.Controller {
 
 // Registration ...
 func (inst *ContextBindingController) Registration() *libgin.ControllerRegistration {
+	groups := inst.getGroups()
 	return &libgin.ControllerRegistration{
-		Route: inst.route,
+		Groups: groups,
+		Route:  inst.route,
 	}
+}
+
+func (inst *ContextBindingController) getGroups() []string {
+	str := inst.GroupNameList
+	src := strings.Split(str, ",")
+	dst := make([]string, 0)
+	for _, item := range src {
+		item = strings.TrimSpace(item)
+		if item == "" {
+			continue
+		}
+		dst = append(dst, item)
+	}
+	return dst
 }
 
 func (inst *ContextBindingController) route(rp libgin.RouterProxy) error {

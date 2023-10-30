@@ -41,6 +41,7 @@ func (inst* p6d96d35d01_code_ContextBindingController) inject(injext application
     com.JWTser = inst.getJWTser(ie)
     com.SessionService = inst.getSessionService(ie)
     com.PermissionService = inst.getPermissionService(ie)
+    com.GroupNameList = inst.getGroupNameList(ie)
 
 
     return nil
@@ -59,6 +60,11 @@ func (inst*p6d96d35d01_code_ContextBindingController) getSessionService(ie appli
 
 func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie application.InjectionExt)p2dece1e49.PermissionService{
     return ie.GetComponent("#alias-2dece1e495fd61b93f78009d229f38cf-PermissionService").(p2dece1e49.PermissionService)
+}
+
+
+func (inst*p6d96d35d01_code_ContextBindingController) getGroupNameList(ie application.InjectionExt)string{
+    return ie.GetString("${security.web.groups}")
 }
 
 
