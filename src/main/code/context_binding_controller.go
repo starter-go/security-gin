@@ -25,6 +25,7 @@ type ContextBindingController struct {
 	PermissionService rbac.PermissionService  //starter:inject("#")
 
 	GroupNameList string //starter:inject("${security.web.groups}")
+	Bypass        bool   //starter:inject("${security.web.bypass}")
 }
 
 func (inst *ContextBindingController) _impl() libgin.Controller {
@@ -81,6 +82,10 @@ func (inst *ContextBindingController) doBind(c *gin.Context) {
 
 func (inst *ContextBindingController) checkPermission(c *gin.Context, sub security.Subject) error {
 
+	if inst.Bypass {
+		return nil
+	}
+
 	cache := inst.PermissionService.GetCache()
 	perm := &rbac.PermissionDTO{}
 	perm.Method = c.Request.Method
@@ -90,6 +95,12 @@ func (inst *ContextBindingController) checkPermission(c *gin.Context, sub securi
 		return err
 	}
 
+	// check enabled
+	if !perm2.Enabled {
+		return fmt.Errorf("no permission")
+	}
+
+	// check roles
 	authenticated := sub.GetSession(true).Authenticated()
 	want := perm2.AcceptRoles.List()
 	for _, role := range want {

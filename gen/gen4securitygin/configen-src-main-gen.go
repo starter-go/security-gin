@@ -42,6 +42,7 @@ func (inst* p6d96d35d01_code_ContextBindingController) inject(injext application
     com.SessionService = inst.getSessionService(ie)
     com.PermissionService = inst.getPermissionService(ie)
     com.GroupNameList = inst.getGroupNameList(ie)
+    com.Bypass = inst.getBypass(ie)
 
 
     return nil
@@ -65,6 +66,11 @@ func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie ap
 
 func (inst*p6d96d35d01_code_ContextBindingController) getGroupNameList(ie application.InjectionExt)string{
     return ie.GetString("${security.web.groups}")
+}
+
+
+func (inst*p6d96d35d01_code_ContextBindingController) getBypass(ie application.InjectionExt)bool{
+    return ie.GetBool("${security.web.bypass}")
 }
 
 
