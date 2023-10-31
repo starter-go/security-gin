@@ -80,6 +80,25 @@ func (inst *ContextBindingController) doBind(c *gin.Context) {
 	}
 }
 
+func (inst *ContextBindingController) getRequestMethod(c *gin.Context) string {
+	req := c.Request
+	return req.Method
+}
+
+func (inst *ContextBindingController) getRequestPath(c *gin.Context) string {
+	path := c.FullPath()
+	if strings.HasPrefix(path, "/") {
+		return path
+	}
+	req := c.Request
+	path = req.RequestURI
+	if strings.HasPrefix(path, "/") {
+		return path
+	}
+	path = req.URL.Path
+	return path
+}
+
 func (inst *ContextBindingController) checkPermission(c *gin.Context, sub security.Subject) error {
 
 	if inst.Bypass {
@@ -88,8 +107,8 @@ func (inst *ContextBindingController) checkPermission(c *gin.Context, sub securi
 
 	cache := inst.PermissionService.GetCache()
 	perm := &rbac.PermissionDTO{}
-	perm.Method = c.Request.Method
-	perm.Path = c.FullPath()
+	perm.Method = inst.getRequestMethod(c)
+	perm.Path = inst.getRequestPath(c)
 	perm2, err := cache.Find(c, perm)
 	if err != nil {
 		return err
