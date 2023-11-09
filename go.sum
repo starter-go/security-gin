@@ -48,6 +48,8 @@ github.com/starter-go/application v0.9.14 h1:rg9difstYVrHpCFi/Ir5Mwpq62/AyfiPpjn
 github.com/starter-go/application v0.9.14/go.mod h1:c2hbSchCqAwnMifCYaCAcaFggl9WIwlwsDcVDGPlAsA=
 github.com/starter-go/base v0.9.9 h1:XLO0p4VWhMzS/LRnzlSJJdK9/ps0yVWUAaim5oCRJWM=
 github.com/starter-go/base v0.9.9/go.mod h1:855h0lveIH1dMfP5u2SQp8LWJlgdstRAEM+MV6HRfLg=
+github.com/starter-go/base v0.9.10 h1:jYZT6WpQdzK9ebEIt5obqg4aZHou5X+ZZA/71y2H+LI=
+github.com/starter-go/base v0.9.10/go.mod h1:855h0lveIH1dMfP5u2SQp8LWJlgdstRAEM+MV6HRfLg=
 github.com/starter-go/configen v0.9.3 h1:OJi7A9XncTFhvbKc8ZgSYF+bVDBnnGGhR2u8jS5G5XM=
 github.com/starter-go/configen v0.9.3/go.mod h1:F0Pw1TAmyIiahcuPBqywIM0nxaYGMD9o4FahvcH2AEQ=
 github.com/starter-go/libgin v1.0.6 h1:5UT/n9a1vLVSvVfAGmhYo1oo1W3uHDsvQ7riupD3UgE=
@@ -78,6 +80,8 @@ github.com/starter-go/security v1.0.38 h1:8JeGlCKvaPSoQILUcTB3FXvEdF2PiOtSR9xF91
 github.com/starter-go/security v1.0.38/go.mod h1:Nm2XnvCl/7FJmFcEHuNYkxIyf/P3txjBJcFHkahPgyM=
 github.com/starter-go/security v1.0.39 h1:ej4k3pf1S7MaXx6zuH5wOpHKPmkmZHYfl/7EJGRZNqg=
 github.com/starter-go/security v1.0.39/go.mod h1:Nm2XnvCl/7FJmFcEHuNYkxIyf/P3txjBJcFHkahPgyM=
+github.com/starter-go/security v1.0.40 h1:D6DGHJ6fqst7uiWC3Ph7Ey+4MkPLbpfvu7ZXqy/RlFs=
+github.com/starter-go/security v1.0.40/go.mod h1:FSUySusR9VV/M+CHiKIhHPC4qBR3YKVkHRp/6RwmOe8=
 github.com/starter-go/starter v1.0.4 h1:HcryIw7l09JwaaeSEs7og5AneOfEI52IaxpOEf2QUVA=
 github.com/starter-go/starter v1.0.4/go.mod h1:j4xPiEqJgINNO92vnmvr28n7SvURI+fDgA5PlB/x6eg=
 github.com/starter-go/vlog v0.9.5 h1:Rh5L8KjicweDjH5UDKVQzqG2Q9/y63G1TWHe8u6VZpk=
