@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/starter-go/security/rbac"
+	"github.com/starter-go/rbac"
 )
 
 // MockPermissionService ...

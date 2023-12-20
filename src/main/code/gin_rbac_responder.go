@@ -1,75 +1,78 @@
 package code
 
-import (
-	"net/http"
-	"time"
+// 已废弃
+// 这个组件已经搬迁至 module："github.com/starter-go/libgin"
 
-	"github.com/starter-go/base/lang"
-	"github.com/starter-go/libgin"
-	"github.com/starter-go/libgin/web"
-	"github.com/starter-go/security/rbac"
-)
+// import (
+// 	"net/http"
+// 	"time"
 
-// SecurityGinResponder ...
-type SecurityGinResponder struct {
+// 	"github.com/starter-go/base/lang"
+// 	"github.com/starter-go/libgin"
+// 	"github.com/starter-go/libgin/web"
+// 	"github.com/starter-go/rbac"
+// )
 
-	//starter:component
-	_as func(libgin.ResponderRegistry, libgin.Responder) //starter:as(".",".")
-}
+// // SecurityGinResponder ...
+// type SecurityGinResponder struct {
 
-func (inst *SecurityGinResponder) _impl() (libgin.ResponderRegistry, libgin.Responder) {
-	return inst, inst
-}
+// 	//starter:component
+// 	_as func(libgin.ResponderRegistry, libgin.Responder) //starter:as(".",".")
+// }
 
-// ListRegistrations ...
-func (inst *SecurityGinResponder) ListRegistrations() []*libgin.ResponderRegistration {
-	r1 := &libgin.ResponderRegistration{
-		Enabled:   true,
-		Priority:  0,
-		Name:      "security-gin-rbac-responder",
-		Responder: inst,
-	}
-	return []*libgin.ResponderRegistration{r1}
-}
+// func (inst *SecurityGinResponder) _impl() (libgin.ResponderRegistry, libgin.Responder) {
+// 	return inst, inst
+// }
 
-// Accept ...
-func (inst *SecurityGinResponder) Accept(resp *libgin.Response) bool {
-	return true
-}
+// // ListRegistrations ...
+// func (inst *SecurityGinResponder) ListRegistrations() []*libgin.ResponderRegistration {
+// 	r1 := &libgin.ResponderRegistration{
+// 		Enabled:   true,
+// 		Priority:  0,
+// 		Name:      "security-gin-rbac-responder",
+// 		Responder: inst,
+// 	}
+// 	return []*libgin.ResponderRegistration{r1}
+// }
 
-// Send ...
-func (inst *SecurityGinResponder) Send(resp *libgin.Response) {
+// // Accept ...
+// func (inst *SecurityGinResponder) Accept(resp *libgin.Response) bool {
+// 	return true
+// }
 
-	now := time.Now()
-	ctx := resp.Context
-	err := resp.Error
-	data := resp.Data
-	status := resp.Status
+// // Send ...
+// func (inst *SecurityGinResponder) Send(resp *libgin.Response) {
 
-	werr, ok := err.(web.Error)
-	if ok {
-		status = werr.Status()
-	}
+// 	now := time.Now()
+// 	ctx := resp.Context
+// 	err := resp.Error
+// 	data := resp.Data
+// 	status := resp.Status
 
-	if status == 0 {
-		if err == nil {
-			status = http.StatusOK
-		} else {
-			status = http.StatusInternalServerError
-		}
-	}
+// 	werr, ok := err.(web.Error)
+// 	if ok {
+// 		status = werr.Status()
+// 	}
 
-	vg, ok := data.(rbac.VOGetter)
-	if ok {
-		v := vg.GetVO()
-		if err != nil {
-			v.Error = err.Error()
-		}
-		v.Message = http.StatusText(status)
-		v.Status = status
-		v.Time = now
-		v.Timestamp = lang.NewTime(now)
-	}
+// 	if status == 0 {
+// 		if err == nil {
+// 			status = http.StatusOK
+// 		} else {
+// 			status = http.StatusInternalServerError
+// 		}
+// 	}
 
-	ctx.JSON(status, data)
-}
+// 	vg, ok := data.(rbac.VOGetter)
+// 	if ok {
+// 		v := vg.GetVO()
+// 		if err != nil {
+// 			v.Error = err.Error()
+// 		}
+// 		v.Message = http.StatusText(status)
+// 		v.Status = status
+// 		v.Time = now
+// 		v.Timestamp = lang.NewTime(now)
+// 	}
+
+// 	ctx.JSON(status, data)
+// }

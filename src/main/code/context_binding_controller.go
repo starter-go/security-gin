@@ -9,9 +9,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/starter-go/base/lang"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/rbac"
 	"github.com/starter-go/security"
 	"github.com/starter-go/security/jwt"
-	"github.com/starter-go/security/rbac"
 )
 
 // ContextBindingController  这个控制器用于配置预先绑定上下文的中间件

@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/rbac"
 	"github.com/starter-go/security"
 	"github.com/starter-go/security/jwt"
-	"github.com/starter-go/security/rbac"
 )
 
 // GinContextSessionProvider ...

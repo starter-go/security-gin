@@ -33,7 +33,6 @@ func (inst*autoRegistrar) addAll() error {
     inst.register(&p6d96d35d01_code_ContextBindingController{})
     inst.register(&p6d96d35d01_code_GinContextJWTAdapter{})
     inst.register(&p6d96d35d01_code_GinContextSessionProvider{})
-    inst.register(&p6d96d35d01_code_SecurityGinResponder{})
 
 
     return nil

@@ -1,9 +1,9 @@
 package gen4securitygorm
 import (
+    p24287f458 "github.com/starter-go/rbac"
     pd4e0ee677 "github.com/starter-go/security"
     p6d96d35d0 "github.com/starter-go/security-gin/src/main/code"
     p91f218d46 "github.com/starter-go/security/jwt"
-    p2dece1e49 "github.com/starter-go/security/rbac"
      "github.com/starter-go/application"
 )
 
@@ -59,8 +59,8 @@ func (inst*p6d96d35d01_code_ContextBindingController) getSessionService(ie appli
 }
 
 
-func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie application.InjectionExt)p2dece1e49.PermissionService{
-    return ie.GetComponent("#alias-2dece1e495fd61b93f78009d229f38cf-PermissionService").(p2dece1e49.PermissionService)
+func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie application.InjectionExt)p24287f458.PermissionService{
+    return ie.GetComponent("#alias-24287f4589fe5add27fb48a88d706565-PermissionService").(p24287f458.PermissionService)
 }
 
 
@@ -177,44 +177,6 @@ func (inst* p6d96d35d01_code_GinContextSessionProvider) inject(injext applicatio
 
 func (inst*p6d96d35d01_code_GinContextSessionProvider) getJWTSer(ie application.InjectionExt)p91f218d46.Service{
     return ie.GetComponent("#alias-91f218d46ec21cd234778bbe54aecc66-Service").(p91f218d46.Service)
-}
-
-
-
-// type p6d96d35d0.SecurityGinResponder in package:github.com/starter-go/security-gin/src/main/code
-//
-// id:com-6d96d35d0126875b-code-SecurityGinResponder
-// class:class-d1a916a203352fd5d33eabc36896b42e-ResponderRegistry class-d1a916a203352fd5d33eabc36896b42e-Responder
-// alias:
-// scope:singleton
-//
-type p6d96d35d01_code_SecurityGinResponder struct {
-}
-
-func (inst* p6d96d35d01_code_SecurityGinResponder) register(cr application.ComponentRegistry) error {
-	r := cr.NewRegistration()
-	r.ID = "com-6d96d35d0126875b-code-SecurityGinResponder"
-	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-ResponderRegistry class-d1a916a203352fd5d33eabc36896b42e-Responder"
-	r.Aliases = ""
-	r.Scope = "singleton"
-	r.NewFunc = inst.new
-	r.InjectFunc = inst.inject
-	return r.Commit()
-}
-
-func (inst* p6d96d35d01_code_SecurityGinResponder) new() any {
-    return &p6d96d35d0.SecurityGinResponder{}
-}
-
-func (inst* p6d96d35d01_code_SecurityGinResponder) inject(injext application.InjectionExt, instance any) error {
-	ie := injext
-	com := instance.(*p6d96d35d0.SecurityGinResponder)
-	nop(ie, com)
-
-	
-
-
-    return nil
 }
 
 
