@@ -7,13 +7,13 @@ import (
 
 	securitygin2 "github.com/starter-go/security-gin/modules/securitygin"
 
-	gen4securitygintest "github.com/starter-go/security-gin/gen/gen4securitygintest"
+	"github.com/starter-go/security-gin/gen/test4securitygin"
 )
 
 // ModuleForTest ... 导出模块
 func ModuleForTest() application.Module {
-	mb := securitygin1.TestModuleT()
-	mb.Components(gen4securitygintest.ComForSecurityGormTest)
+	mb := securitygin1.NewTestModule()
+	mb.Components(test4securitygin.ComForSecurityGormTest)
 	mb.Depend(securitygin2.Module())
 	return mb.Create()
 }

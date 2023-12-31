@@ -1,4 +1,4 @@
-package gen4securitygorm
+package test4securitygin
 
 import "github.com/starter-go/application"
 
@@ -30,9 +30,8 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
-    inst.register(&p6d96d35d01_code_ContextBindingController{})
-    inst.register(&p6d96d35d01_code_GinContextJWTAdapter{})
-    inst.register(&p6d96d35d01_code_GinContextSessionProvider{})
+    inst.register(&p0291972cb6_code_Demo1controller{})
+    inst.register(&p0291972cb6_code_MockPermissionService{})
 
 
     return nil

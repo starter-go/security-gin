@@ -1,4 +1,4 @@
-package gen4securitygorm
+package main4securitygin
 import (
     p24287f458 "github.com/starter-go/rbac"
     pd4e0ee677 "github.com/starter-go/security"

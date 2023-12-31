@@ -1,4 +1,4 @@
-package gen4securitygormtest
+package test4securitygin
 
 import "github.com/starter-go/application"
 

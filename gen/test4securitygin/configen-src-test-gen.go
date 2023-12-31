@@ -1,4 +1,4 @@
-package gen4securitygormtest
+package test4securitygin
 import (
     pd1a916a20 "github.com/starter-go/libgin"
     p0291972cb "github.com/starter-go/security-gin/src/test/code"
