@@ -10,8 +10,8 @@ import (
 
 const (
 	theModuleName     = "github.com/starter-go/security-gin"
-	theModuleVersion  = "v1.0.45"
-	theModuleRevision = 16
+	theModuleVersion  = "v1.0.46"
+	theModuleRevision = 17
 )
 
 ////////////////////////////////////////////////////////////////////////////////
