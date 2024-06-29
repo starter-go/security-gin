@@ -3,6 +3,7 @@ package code
 import (
 	"context"
 
+	"github.com/starter-go/application/properties"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/rbac"
 	"github.com/starter-go/security"
@@ -123,4 +124,12 @@ func (inst *ginContextSession) Roles() rbac.RoleNameList {
 func (inst *ginContextSession) Authenticated() bool {
 	ses := inst.Get()
 	return ses.Authenticated
+}
+
+func (inst *ginContextSession) GetProperties() properties.Table {
+	ses := inst.Get()
+	src := ses.Properties
+	dst := properties.NewTable(nil)
+	dst.Import(src)
+	return dst
 }
