@@ -27,7 +27,7 @@ require (
 	github.com/starter-go/keyvalues v0.0.1 // indirect
 	github.com/starter-go/libgin v1.0.12 // indirect
 	github.com/starter-go/rbac v0.0.8 // indirect
-	github.com/starter-go/security v1.0.51 // indirect
+	github.com/starter-go/security v1.0.52 // indirect
 	github.com/starter-go/starter v1.0.10 // indirect
 	github.com/starter-go/stopper v0.0.3 // indirect
 	github.com/starter-go/units v0.0.6 // indirect
