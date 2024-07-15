@@ -12,6 +12,8 @@ import (
 	"github.com/starter-go/rbac"
 	"github.com/starter-go/security"
 	"github.com/starter-go/security/jwt"
+	"github.com/starter-go/security/subjects"
+	"github.com/starter-go/vlog"
 )
 
 // ContextBindingController  这个控制器用于配置预先绑定上下文的中间件
@@ -23,6 +25,7 @@ type ContextBindingController struct {
 	JWTser            jwt.Service             //starter:inject("#")
 	SessionService    security.SessionService //starter:inject("#")
 	PermissionService rbac.PermissionService  //starter:inject("#")
+	SubjectsLoader    subjects.Loader         //starter:inject("#")
 
 	GroupNameList string //starter:inject("${security.web.groups}")
 	Bypass        bool   //starter:inject("${security.web.bypass}")
@@ -59,25 +62,39 @@ func (inst *ContextBindingController) route(rp libgin.RouterProxy) error {
 	rp.Route(&libgin.Routing{
 		Priority:   1000,
 		Middleware: true,
-		Handlers:   []gin.HandlerFunc{inst.doBind},
+		Handlers:   []gin.HandlerFunc{inst.handleBind},
 	})
 	return nil
 }
 
-func (inst *ContextBindingController) doBind(c *gin.Context) {
+func (inst *ContextBindingController) handleBind(c *gin.Context) {
+	err := inst.doBind(c)
+	if err != nil {
+		vlog.Warn(err.Error())
+		inst.sendNoPermission(c)
+	}
+}
+
+func (inst *ContextBindingController) doBind(c *gin.Context) error {
 
 	libgin.BindContext(c)
 
-	sub, err := security.SetupSubject(c, inst.SessionService)
+	err := subjects.Setup(c, inst.SubjectsLoader)
 	if err != nil {
-		panic(err)
+		return err
+	}
+
+	sub, err := subjects.Current(c)
+	if err != nil {
+		return err
 	}
 
 	err = inst.checkPermission(c, sub)
 	if err != nil {
-		inst.sendNoPermission(c)
-		return
+		return err
 	}
+
+	return nil
 }
 
 func (inst *ContextBindingController) getRequestMethod(c *gin.Context) string {
@@ -99,7 +116,7 @@ func (inst *ContextBindingController) getRequestPath(c *gin.Context) string {
 	return path
 }
 
-func (inst *ContextBindingController) checkPermission(c *gin.Context, sub security.Subject) error {
+func (inst *ContextBindingController) checkPermission(c *gin.Context, sub subjects.Subject) error {
 
 	if inst.Bypass {
 		return nil
@@ -120,7 +137,7 @@ func (inst *ContextBindingController) checkPermission(c *gin.Context, sub securi
 	}
 
 	// check roles
-	authenticated := sub.GetSession(true).Authenticated()
+	authenticated := sub.GetSession().Authenticated()
 	want := perm2.AcceptRoles.List()
 	for _, role := range want {
 		if authenticated {

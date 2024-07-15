@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/gin-gonic/gin"
-	"github.com/starter-go/base/lang"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/security/jwt"
 )
@@ -51,20 +50,20 @@ func (inst *GinContextJWTAdapter) Accept(c context.Context) bool {
 	return (err == nil) && (gc != nil)
 }
 
-// SetDTO ...
-func (inst *GinContextJWTAdapter) SetDTO(c context.Context, o *jwt.Token) error {
+// // SetDTO ...
+// func (inst *GinContextJWTAdapter) SetDTO(c context.Context, o *jwt.Token) error {
 
-	now := lang.Now()
-	o.CreatedAt = now
-	o.UpdatedAt = now
-	o.ExpiredAt = now + lang.Time(inst.MaxAgeInMS)
+// 	now := lang.Now()
+// 	o.CreatedAt = now
+// 	o.UpdatedAt = now
+// 	o.ExpiredAt = now + lang.Time(inst.MaxAgeInMS)
 
-	text, err := inst.JWTService.Encode(o)
-	if err != nil {
-		return err
-	}
-	return inst.SetText(c, text)
-}
+// 	text, err := inst.JWTService.Encode(o)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	return inst.SetText(c, text)
+// }
 
 // SetText ...
 func (inst *GinContextJWTAdapter) SetText(c context.Context, t jwt.Text) error {
@@ -93,18 +92,18 @@ func (inst *GinContextJWTAdapter) SetText(c context.Context, t jwt.Text) error {
 	return nil
 }
 
-// GetDTO ...
-func (inst *GinContextJWTAdapter) GetDTO(c context.Context) (*jwt.Token, error) {
-	text, err := inst.GetText(c)
-	if err != nil {
-		return &jwt.Token{}, nil
-	}
-	token, err := inst.JWTService.Decode(text)
-	if err != nil {
-		return &jwt.Token{}, nil
-	}
-	return token, nil
-}
+// // GetDTO ...
+// func (inst *GinContextJWTAdapter) GetDTO(c context.Context) (*jwt.Token, error) {
+// 	text, err := inst.GetText(c)
+// 	if err != nil {
+// 		return &jwt.Token{}, nil
+// 	}
+// 	token, err := inst.JWTService.Decode(text)
+// 	if err != nil {
+// 		return &jwt.Token{}, nil
+// 	}
+// 	return token, nil
+// }
 
 // GetText ...
 func (inst *GinContextJWTAdapter) GetText(c context.Context) (jwt.Text, error) {

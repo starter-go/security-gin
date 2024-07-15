@@ -4,6 +4,7 @@ import (
     pd4e0ee677 "github.com/starter-go/security"
     p6d96d35d0 "github.com/starter-go/security-gin/src/main/code"
     p91f218d46 "github.com/starter-go/security/jwt"
+    paff1180b7 "github.com/starter-go/security/subjects"
      "github.com/starter-go/application"
 )
 
@@ -41,6 +42,7 @@ func (inst* p6d96d35d01_code_ContextBindingController) inject(injext application
     com.JWTser = inst.getJWTser(ie)
     com.SessionService = inst.getSessionService(ie)
     com.PermissionService = inst.getPermissionService(ie)
+    com.SubjectsLoader = inst.getSubjectsLoader(ie)
     com.GroupNameList = inst.getGroupNameList(ie)
     com.Bypass = inst.getBypass(ie)
 
@@ -61,6 +63,11 @@ func (inst*p6d96d35d01_code_ContextBindingController) getSessionService(ie appli
 
 func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie application.InjectionExt)p24287f458.PermissionService{
     return ie.GetComponent("#alias-24287f4589fe5add27fb48a88d706565-PermissionService").(p24287f458.PermissionService)
+}
+
+
+func (inst*p6d96d35d01_code_ContextBindingController) getSubjectsLoader(ie application.InjectionExt)paff1180b7.Loader{
+    return ie.GetComponent("#alias-aff1180b734cd089659a2dcc3be458d7-Loader").(paff1180b7.Loader)
 }
 
 
@@ -133,50 +140,6 @@ func (inst*p6d96d35d01_code_GinContextJWTAdapter) getUseHeader(ie application.In
 
 func (inst*p6d96d35d01_code_GinContextJWTAdapter) getMaxAgeInMS(ie application.InjectionExt)int64{
     return ie.GetInt64("${security.jwt.max-age-in-ms}")
-}
-
-
-
-// type p6d96d35d0.GinContextSessionProvider in package:github.com/starter-go/security-gin/src/main/code
-//
-// id:com-6d96d35d0126875b-code-GinContextSessionProvider
-// class:class-d4e0ee677c339b7ffcf1d55767953499-SessionProvider class-d4e0ee677c339b7ffcf1d55767953499-SessionRegistry
-// alias:
-// scope:singleton
-//
-type p6d96d35d01_code_GinContextSessionProvider struct {
-}
-
-func (inst* p6d96d35d01_code_GinContextSessionProvider) register(cr application.ComponentRegistry) error {
-	r := cr.NewRegistration()
-	r.ID = "com-6d96d35d0126875b-code-GinContextSessionProvider"
-	r.Classes = "class-d4e0ee677c339b7ffcf1d55767953499-SessionProvider class-d4e0ee677c339b7ffcf1d55767953499-SessionRegistry"
-	r.Aliases = ""
-	r.Scope = "singleton"
-	r.NewFunc = inst.new
-	r.InjectFunc = inst.inject
-	return r.Commit()
-}
-
-func (inst* p6d96d35d01_code_GinContextSessionProvider) new() any {
-    return &p6d96d35d0.GinContextSessionProvider{}
-}
-
-func (inst* p6d96d35d01_code_GinContextSessionProvider) inject(injext application.InjectionExt, instance any) error {
-	ie := injext
-	com := instance.(*p6d96d35d0.GinContextSessionProvider)
-	nop(ie, com)
-
-	
-    com.JWTSer = inst.getJWTSer(ie)
-
-
-    return nil
-}
-
-
-func (inst*p6d96d35d01_code_GinContextSessionProvider) getJWTSer(ie application.InjectionExt)p91f218d46.Service{
-    return ie.GetComponent("#alias-91f218d46ec21cd234778bbe54aecc66-Service").(p91f218d46.Service)
 }
 
 

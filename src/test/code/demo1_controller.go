@@ -4,10 +4,9 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
-	"github.com/starter-go/base/lang"
 	"github.com/starter-go/libgin"
 	"github.com/starter-go/rbac"
-	"github.com/starter-go/security"
+	"github.com/starter-go/security/subjects"
 )
 
 // Demo1controller ...
@@ -114,21 +113,15 @@ func (inst *demo1request) execute(fn func() error) {
 func (inst *demo1request) do1() error {
 
 	ctx := inst.context
-	sub, err := security.GetSubject(ctx)
+	sub, err := subjects.Current(ctx)
 	if err != nil {
 		return err
 	}
 
-	ses := sub.GetSession(true)
-	so := ses.Get()
-	so.UpdatedAt = lang.Now()
-	p := so.Properties
-	if p == nil {
-		p = make(map[string]string)
-		so.Properties = p
-	}
-	p["id"] = fmt.Sprintf("%s", inst.id)
-	ses.Set(so)
+	session := sub.GetSession()
+	val := fmt.Sprintf("%s", inst.id)
+	session.SetProperty("id", val)
 
-	return nil
+	session.Create()
+	return session.Commit()
 }
