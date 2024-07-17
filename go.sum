@@ -94,6 +94,8 @@ github.com/starter-go/rbac v0.0.8 h1:jgisFOVqy9Zgb1tLtA2gY2T7nPybUo1ofB5PWfZq/z4
 github.com/starter-go/rbac v0.0.8/go.mod h1:N93w2twpuiCD1yDDBeVyRm2a+Voz0OIpIpxpuox7fUY=
 github.com/starter-go/rbac v0.0.11 h1:9UYHYWB1meJz8e9JMPtlIAfw8cYofQijRB3sSRW1gAA=
 github.com/starter-go/rbac v0.0.11/go.mod h1:N93w2twpuiCD1yDDBeVyRm2a+Voz0OIpIpxpuox7fUY=
+github.com/starter-go/security v0.0.0-20240717092359-6087ec30520d h1:x7Abkj12Ek30JLhMQT4S0USXMmJ4IS0arSE9zah15pY=
+github.com/starter-go/security v0.0.0-20240717092359-6087ec30520d/go.mod h1:WQkxWC12s/qpasD0Mbc3IiTN+Xp94nJwbe0NkLiKrQg=
 github.com/starter-go/security v1.0.24 h1:o+s38fFziXvGgV1u0r7f59kMf6iRz3e+MC6hUNS1eNE=
 github.com/starter-go/security v1.0.24/go.mod h1:pzS9wG/r9bNNnZLgTw9MB5kRuaOWCV/uffxh2oMzkbI=
 github.com/starter-go/security v1.0.25 h1:nNCjNwwRse14b+bi9N931x3AKPnAC7bWck+ygbizl8M=
