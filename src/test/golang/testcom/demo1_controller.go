@@ -1,12 +1,12 @@
-package code
+package testcom
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
+	"github.com/starter-go/application"
 	"github.com/starter-go/libgin"
+	"github.com/starter-go/libgorm"
 	"github.com/starter-go/rbac"
-	"github.com/starter-go/security/subjects"
+	"github.com/starter-go/v0/subjects"
 )
 
 // Demo1controller ...
@@ -17,16 +17,36 @@ type Demo1controller struct {
 
 	Responder libgin.Responder //starter:inject("#")
 
+	DataGroups []libgorm.GroupRegistry //starter:inject(".")
 }
 
 func (inst *Demo1controller) _impl() libgin.Controller {
 	return inst
 }
 
+func (inst *Demo1controller) Life() *application.Life {
+	return &application.Life{
+		// OnStartPre: inst.onStart,
+	}
+}
+
+// func (inst *Demo1controller) onStart() error {
+// 	src := inst.DataGroups
+// 	for _, r1 := range src {
+// 		tmp := r1.Groups()
+// 		for _, r2 := range tmp {
+// 			uri := r2.URI
+// 			vlog.Debug("data.group.uri = %s", uri)
+// 		}
+// 	}
+// 	return nil
+// }
+
 // Registration ...
 func (inst *Demo1controller) Registration() *libgin.ControllerRegistration {
 	return &libgin.ControllerRegistration{
-		Route: inst.route,
+		Groups: []string{"rest"},
+		Route:  inst.route,
 	}
 }
 
@@ -34,6 +54,7 @@ func (inst *Demo1controller) route(rp libgin.RouterProxy) error {
 	rp = rp.For("demo1")
 	rp.GET("", inst.handleGet)
 	rp.GET(":id", inst.handleGet)
+	rp.GET("/demo/:uuid/:name/detail", inst.handleGet)
 	return nil
 }
 
@@ -113,15 +134,28 @@ func (inst *demo1request) execute(fn func() error) {
 func (inst *demo1request) do1() error {
 
 	ctx := inst.context
-	sub, err := subjects.Current(ctx)
+	sub, err := subjects.GetCurrent(ctx)
 	if err != nil {
 		return err
 	}
 
-	session := sub.GetSession()
-	val := fmt.Sprintf("%s", inst.id)
-	session.SetProperty("id", val)
+	// gett, err := sub.DoGet()
 
-	session.Create()
-	return session.Commit()
+	sett, err := sub.DoSet()
+	if err != nil {
+		return err
+	}
+
+	// session := sub.GetSession()
+	// val := fmt.Sprintf("%s", inst.id)
+	// session.SetProperty("id", val)
+	// session.Create()
+	// return session.Commit()
+
+	sett.SetProperty("foo", "11")
+	sett.SetProperty("bar", "22")
+
+	sub.Create()
+
+	return sub.Flush()
 }

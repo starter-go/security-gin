@@ -1,23 +1,24 @@
 package test4securitygin
 import (
     pd1a916a20 "github.com/starter-go/libgin"
-    p0291972cb "github.com/starter-go/security-gin/src/test/code"
+    p512a30914 "github.com/starter-go/libgorm"
+    pbb42fed2b "github.com/starter-go/security-gin/src/test/golang/testcom"
      "github.com/starter-go/application"
 )
 
-// type p0291972cb.Demo1controller in package:github.com/starter-go/security-gin/src/test/code
+// type pbb42fed2b.Demo1controller in package:github.com/starter-go/security-gin/src/test/golang/testcom
 //
-// id:com-0291972cb6d389c8-code-Demo1controller
+// id:com-bb42fed2be2c7d19-testcom-Demo1controller
 // class:class-d1a916a203352fd5d33eabc36896b42e-Controller
 // alias:
 // scope:singleton
 //
-type p0291972cb6_code_Demo1controller struct {
+type pbb42fed2be_testcom_Demo1controller struct {
 }
 
-func (inst* p0291972cb6_code_Demo1controller) register(cr application.ComponentRegistry) error {
+func (inst* pbb42fed2be_testcom_Demo1controller) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
-	r.ID = "com-0291972cb6d389c8-code-Demo1controller"
+	r.ID = "com-bb42fed2be2c7d19-testcom-Demo1controller"
 	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
 	r.Aliases = ""
 	r.Scope = "singleton"
@@ -26,42 +27,54 @@ func (inst* p0291972cb6_code_Demo1controller) register(cr application.ComponentR
 	return r.Commit()
 }
 
-func (inst* p0291972cb6_code_Demo1controller) new() any {
-    return &p0291972cb.Demo1controller{}
+func (inst* pbb42fed2be_testcom_Demo1controller) new() any {
+    return &pbb42fed2b.Demo1controller{}
 }
 
-func (inst* p0291972cb6_code_Demo1controller) inject(injext application.InjectionExt, instance any) error {
+func (inst* pbb42fed2be_testcom_Demo1controller) inject(injext application.InjectionExt, instance any) error {
 	ie := injext
-	com := instance.(*p0291972cb.Demo1controller)
+	com := instance.(*pbb42fed2b.Demo1controller)
 	nop(ie, com)
 
 	
     com.Responder = inst.getResponder(ie)
+    com.DataGroups = inst.getDataGroups(ie)
 
 
     return nil
 }
 
 
-func (inst*p0291972cb6_code_Demo1controller) getResponder(ie application.InjectionExt)pd1a916a20.Responder{
+func (inst*pbb42fed2be_testcom_Demo1controller) getResponder(ie application.InjectionExt)pd1a916a20.Responder{
     return ie.GetComponent("#alias-d1a916a203352fd5d33eabc36896b42e-Responder").(pd1a916a20.Responder)
 }
 
 
+func (inst*pbb42fed2be_testcom_Demo1controller) getDataGroups(ie application.InjectionExt)[]p512a30914.GroupRegistry{
+    dst := make([]p512a30914.GroupRegistry, 0)
+    src := ie.ListComponents(".class-512a309140d0ad99eb1c95c8dc0d02f9-GroupRegistry")
+    for _, item1 := range src {
+        item2 := item1.(p512a30914.GroupRegistry)
+        dst = append(dst, item2)
+    }
+    return dst
+}
 
-// type p0291972cb.MockPermissionService in package:github.com/starter-go/security-gin/src/test/code
+
+
+// type pbb42fed2b.MockPermissionService in package:github.com/starter-go/security-gin/src/test/golang/testcom
 //
-// id:com-0291972cb6d389c8-code-MockPermissionService
+// id:com-bb42fed2be2c7d19-testcom-MockPermissionService
 // class:
 // alias:alias-24287f4589fe5add27fb48a88d706565-PermissionService
 // scope:singleton
 //
-type p0291972cb6_code_MockPermissionService struct {
+type pbb42fed2be_testcom_MockPermissionService struct {
 }
 
-func (inst* p0291972cb6_code_MockPermissionService) register(cr application.ComponentRegistry) error {
+func (inst* pbb42fed2be_testcom_MockPermissionService) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
-	r.ID = "com-0291972cb6d389c8-code-MockPermissionService"
+	r.ID = "com-bb42fed2be2c7d19-testcom-MockPermissionService"
 	r.Classes = ""
 	r.Aliases = "alias-24287f4589fe5add27fb48a88d706565-PermissionService"
 	r.Scope = "singleton"
@@ -70,13 +83,13 @@ func (inst* p0291972cb6_code_MockPermissionService) register(cr application.Comp
 	return r.Commit()
 }
 
-func (inst* p0291972cb6_code_MockPermissionService) new() any {
-    return &p0291972cb.MockPermissionService{}
+func (inst* pbb42fed2be_testcom_MockPermissionService) new() any {
+    return &pbb42fed2b.MockPermissionService{}
 }
 
-func (inst* p0291972cb6_code_MockPermissionService) inject(injext application.InjectionExt, instance any) error {
+func (inst* pbb42fed2be_testcom_MockPermissionService) inject(injext application.InjectionExt, instance any) error {
 	ie := injext
-	com := instance.(*p0291972cb.MockPermissionService)
+	com := instance.(*pbb42fed2b.MockPermissionService)
 	nop(ie, com)
 
 	

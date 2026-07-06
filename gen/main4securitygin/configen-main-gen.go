@@ -30,8 +30,9 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
-    inst.register(&p6d96d35d01_code_ContextBindingController{})
-    inst.register(&p6d96d35d01_code_GinContextJWTAdapter{})
+    inst.register(&p896fdb9136_ctrl_ContextBindingController{})
+    inst.register(&p896fdb9136_ctrl_GinContextJWTAdapter{})
+    inst.register(&p896fdb9136_ctrl_WebRbacController{})
 
 
     return nil

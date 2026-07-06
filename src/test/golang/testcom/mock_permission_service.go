@@ -1,4 +1,4 @@
-package code
+package testcom
 
 import (
 	"context"
@@ -62,6 +62,6 @@ func (inst *myMockPermissionCache) Find(c context.Context, want *rbac.Permission
 	have := &rbac.PermissionDTO{}
 	have.Method = want.Method
 	have.Path = want.Path
-	have.AcceptRoles = rbac.NewRoleNameList(rbac.RoleAny, rbac.RoleAnonym, rbac.RoleUser)
+	have.Roles = rbac.NewRoleNameList(rbac.RoleAny, rbac.RoleAnonym, rbac.RoleUser)
 	return have, nil
 }

@@ -30,8 +30,8 @@ func (inst *autoRegistrar) register(factory comFactory) error {
 func (inst*autoRegistrar) addAll() error {
 
     
-    inst.register(&p0291972cb6_code_Demo1controller{})
-    inst.register(&p0291972cb6_code_MockPermissionService{})
+    inst.register(&pbb42fed2be_testcom_Demo1controller{})
+    inst.register(&pbb42fed2be_testcom_MockPermissionService{})
 
 
     return nil

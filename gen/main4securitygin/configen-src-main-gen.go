@@ -1,26 +1,23 @@
 package main4securitygin
 import (
-    p24287f458 "github.com/starter-go/rbac"
-    pd4e0ee677 "github.com/starter-go/security"
-    p6d96d35d0 "github.com/starter-go/security-gin/src/main/code"
-    p91f218d46 "github.com/starter-go/security/jwt"
-    paff1180b7 "github.com/starter-go/security/subjects"
+    p896fdb913 "github.com/starter-go/security-gin/lib/web/ctrl"
+    pfd2c28477 "github.com/starter-go/v0/subjects"
      "github.com/starter-go/application"
 )
 
-// type p6d96d35d0.ContextBindingController in package:github.com/starter-go/security-gin/src/main/code
+// type p896fdb913.ContextBindingController in package:github.com/starter-go/security-gin/lib/web/ctrl
 //
-// id:com-6d96d35d0126875b-code-ContextBindingController
+// id:com-896fdb91368de65f-ctrl-ContextBindingController
 // class:class-d1a916a203352fd5d33eabc36896b42e-Controller
 // alias:
 // scope:singleton
 //
-type p6d96d35d01_code_ContextBindingController struct {
+type p896fdb9136_ctrl_ContextBindingController struct {
 }
 
-func (inst* p6d96d35d01_code_ContextBindingController) register(cr application.ComponentRegistry) error {
+func (inst* p896fdb9136_ctrl_ContextBindingController) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
-	r.ID = "com-6d96d35d0126875b-code-ContextBindingController"
+	r.ID = "com-896fdb91368de65f-ctrl-ContextBindingController"
 	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
 	r.Aliases = ""
 	r.Scope = "singleton"
@@ -29,21 +26,17 @@ func (inst* p6d96d35d01_code_ContextBindingController) register(cr application.C
 	return r.Commit()
 }
 
-func (inst* p6d96d35d01_code_ContextBindingController) new() any {
-    return &p6d96d35d0.ContextBindingController{}
+func (inst* p896fdb9136_ctrl_ContextBindingController) new() any {
+    return &p896fdb913.ContextBindingController{}
 }
 
-func (inst* p6d96d35d01_code_ContextBindingController) inject(injext application.InjectionExt, instance any) error {
+func (inst* p896fdb9136_ctrl_ContextBindingController) inject(injext application.InjectionExt, instance any) error {
 	ie := injext
-	com := instance.(*p6d96d35d0.ContextBindingController)
+	com := instance.(*p896fdb913.ContextBindingController)
 	nop(ie, com)
 
 	
-    com.JWTser = inst.getJWTser(ie)
-    com.SessionService = inst.getSessionService(ie)
-    com.PermissionService = inst.getPermissionService(ie)
-    com.SubjectsLoader = inst.getSubjectsLoader(ie)
-    com.GroupNameList = inst.getGroupNameList(ie)
+    com.ChainHolder = inst.getChainHolder(ie)
     com.Bypass = inst.getBypass(ie)
 
 
@@ -51,51 +44,31 @@ func (inst* p6d96d35d01_code_ContextBindingController) inject(injext application
 }
 
 
-func (inst*p6d96d35d01_code_ContextBindingController) getJWTser(ie application.InjectionExt)p91f218d46.Service{
-    return ie.GetComponent("#alias-91f218d46ec21cd234778bbe54aecc66-Service").(p91f218d46.Service)
+func (inst*p896fdb9136_ctrl_ContextBindingController) getChainHolder(ie application.InjectionExt)pfd2c28477.FilterChainHolder{
+    return ie.GetComponent("#alias-fd2c28477d8555ea1fa4190037afa453-FilterChainHolder").(pfd2c28477.FilterChainHolder)
 }
 
 
-func (inst*p6d96d35d01_code_ContextBindingController) getSessionService(ie application.InjectionExt)pd4e0ee677.SessionService{
-    return ie.GetComponent("#alias-d4e0ee677c339b7ffcf1d55767953499-SessionService").(pd4e0ee677.SessionService)
-}
-
-
-func (inst*p6d96d35d01_code_ContextBindingController) getPermissionService(ie application.InjectionExt)p24287f458.PermissionService{
-    return ie.GetComponent("#alias-24287f4589fe5add27fb48a88d706565-PermissionService").(p24287f458.PermissionService)
-}
-
-
-func (inst*p6d96d35d01_code_ContextBindingController) getSubjectsLoader(ie application.InjectionExt)paff1180b7.Loader{
-    return ie.GetComponent("#alias-aff1180b734cd089659a2dcc3be458d7-Loader").(paff1180b7.Loader)
-}
-
-
-func (inst*p6d96d35d01_code_ContextBindingController) getGroupNameList(ie application.InjectionExt)string{
-    return ie.GetString("${security.web.groups}")
-}
-
-
-func (inst*p6d96d35d01_code_ContextBindingController) getBypass(ie application.InjectionExt)bool{
+func (inst*p896fdb9136_ctrl_ContextBindingController) getBypass(ie application.InjectionExt)bool{
     return ie.GetBool("${security.web.bypass}")
 }
 
 
 
-// type p6d96d35d0.GinContextJWTAdapter in package:github.com/starter-go/security-gin/src/main/code
+// type p896fdb913.GinContextJWTAdapter in package:github.com/starter-go/security-gin/lib/web/ctrl
 //
-// id:com-6d96d35d0126875b-code-GinContextJWTAdapter
-// class:class-91f218d46ec21cd234778bbe54aecc66-Registry
+// id:com-896fdb91368de65f-ctrl-GinContextJWTAdapter
+// class:class-0ef6f2938681e99da4b0c19ce3d3fb4f-Lifecycle
 // alias:
 // scope:singleton
 //
-type p6d96d35d01_code_GinContextJWTAdapter struct {
+type p896fdb9136_ctrl_GinContextJWTAdapter struct {
 }
 
-func (inst* p6d96d35d01_code_GinContextJWTAdapter) register(cr application.ComponentRegistry) error {
+func (inst* p896fdb9136_ctrl_GinContextJWTAdapter) register(cr application.ComponentRegistry) error {
 	r := cr.NewRegistration()
-	r.ID = "com-6d96d35d0126875b-code-GinContextJWTAdapter"
-	r.Classes = "class-91f218d46ec21cd234778bbe54aecc66-Registry"
+	r.ID = "com-896fdb91368de65f-ctrl-GinContextJWTAdapter"
+	r.Classes = "class-0ef6f2938681e99da4b0c19ce3d3fb4f-Lifecycle"
 	r.Aliases = ""
 	r.Scope = "singleton"
 	r.NewFunc = inst.new
@@ -103,43 +76,63 @@ func (inst* p6d96d35d01_code_GinContextJWTAdapter) register(cr application.Compo
 	return r.Commit()
 }
 
-func (inst* p6d96d35d01_code_GinContextJWTAdapter) new() any {
-    return &p6d96d35d0.GinContextJWTAdapter{}
+func (inst* p896fdb9136_ctrl_GinContextJWTAdapter) new() any {
+    return &p896fdb913.GinContextJWTAdapter{}
 }
 
-func (inst* p6d96d35d01_code_GinContextJWTAdapter) inject(injext application.InjectionExt, instance any) error {
+func (inst* p896fdb9136_ctrl_GinContextJWTAdapter) inject(injext application.InjectionExt, instance any) error {
 	ie := injext
-	com := instance.(*p6d96d35d0.GinContextJWTAdapter)
+	com := instance.(*p896fdb913.GinContextJWTAdapter)
 	nop(ie, com)
 
 	
-    com.JWTService = inst.getJWTService(ie)
-    com.UseCookie = inst.getUseCookie(ie)
-    com.UseHeader = inst.getUseHeader(ie)
-    com.MaxAgeInMS = inst.getMaxAgeInMS(ie)
 
 
     return nil
 }
 
 
-func (inst*p6d96d35d01_code_GinContextJWTAdapter) getJWTService(ie application.InjectionExt)p91f218d46.Service{
-    return ie.GetComponent("#alias-91f218d46ec21cd234778bbe54aecc66-Service").(p91f218d46.Service)
+
+// type p896fdb913.WebRbacController in package:github.com/starter-go/security-gin/lib/web/ctrl
+//
+// id:com-896fdb91368de65f-ctrl-WebRbacController
+// class:class-d1a916a203352fd5d33eabc36896b42e-Controller
+// alias:
+// scope:singleton
+//
+type p896fdb9136_ctrl_WebRbacController struct {
+}
+
+func (inst* p896fdb9136_ctrl_WebRbacController) register(cr application.ComponentRegistry) error {
+	r := cr.NewRegistration()
+	r.ID = "com-896fdb91368de65f-ctrl-WebRbacController"
+	r.Classes = "class-d1a916a203352fd5d33eabc36896b42e-Controller"
+	r.Aliases = ""
+	r.Scope = "singleton"
+	r.NewFunc = inst.new
+	r.InjectFunc = inst.inject
+	return r.Commit()
+}
+
+func (inst* p896fdb9136_ctrl_WebRbacController) new() any {
+    return &p896fdb913.WebRbacController{}
+}
+
+func (inst* p896fdb9136_ctrl_WebRbacController) inject(injext application.InjectionExt, instance any) error {
+	ie := injext
+	com := instance.(*p896fdb913.WebRbacController)
+	nop(ie, com)
+
+	
+    com.Bypass = inst.getBypass(ie)
+
+
+    return nil
 }
 
 
-func (inst*p6d96d35d01_code_GinContextJWTAdapter) getUseCookie(ie application.InjectionExt)bool{
-    return ie.GetBool("${security.jwt.use-cookie}")
-}
-
-
-func (inst*p6d96d35d01_code_GinContextJWTAdapter) getUseHeader(ie application.InjectionExt)bool{
-    return ie.GetBool("${security.jwt.use-header}")
-}
-
-
-func (inst*p6d96d35d01_code_GinContextJWTAdapter) getMaxAgeInMS(ie application.InjectionExt)int64{
-    return ie.GetInt64("${security.jwt.max-age-in-ms}")
+func (inst*p896fdb9136_ctrl_WebRbacController) getBypass(ie application.InjectionExt)bool{
+    return ie.GetBool("${security.web.bypass}")
 }
 
 
